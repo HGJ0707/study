@@ -10,9 +10,9 @@ export function toolSideBarConfig() {
     },
   ];
 
-  // frontEnd.forEach((item) => {
-  //   item.collapsed = false;
-  // })
+  toolSideBarConfig.forEach((item) => {
+    item.collapsed = false;
+  })
 
   return toolSideBarConfig;
 }

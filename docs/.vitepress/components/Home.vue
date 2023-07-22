@@ -5,7 +5,7 @@
       <span class="accent">GG Bond</span>
       <br />个人学习总结记录
     </h1>
-    <div class="action"><a class="VPButton medium brand" href="/study/zh/javascript/1-变量声明.html">进入 ——></a></div>
+    <div class="action"><a class="VPButton medium brand" href="/study/front-end/javascript/1-变量声明.html">进入 ——></a></div>
   </section>
 </template>
 

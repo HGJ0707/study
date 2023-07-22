@@ -41,9 +41,9 @@ export function frontEndSideBarConfig() {
     },
   ];
 
-  // frontEnd.forEach((item) => {
-  //   item.collapsed = false;
-  // })
+  frontEnd.forEach((item) => {
+    item.collapsed = false;
+  })
 
   return frontEnd;
 }
