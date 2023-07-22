@@ -1,6 +1,9 @@
 import { defineConfig } from 'vitepress'
 import type { Config as ThemeConfig } from '@vue/theme'
-import sideBarConfig from './config/sideBarConfig/index'
+import {
+  frontEndSideBarConfig,
+  toolSideBarConfig
+} from './config/sideBarConfig/index'
 import navBarConfig from './config/navBarConfig/index'
 
 // https://vitepress.dev/reference/site-config
@@ -23,7 +26,10 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     // logo: '/images/logo.png',
     nav: navBarConfig(),
-    sidebar: sideBarConfig(),
+    sidebar: {
+      '/front-end/': frontEndSideBarConfig(),
+      '/tool/': toolSideBarConfig()
+    },
     socialLinks: [
       { icon: 'github', link: 'https://github.com/HGJ0707/study' }
     ],
