@@ -24,7 +24,7 @@ export default defineConfig({
 
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
-    // logo: '/images/logo.png',
+    logo: '/images/logo.png',
     nav: navBarConfig(),
     sidebar: {
       '/front-end/': frontEndSideBarConfig(),

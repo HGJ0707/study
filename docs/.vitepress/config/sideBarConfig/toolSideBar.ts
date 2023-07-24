@@ -1,6 +1,5 @@
 export function toolSideBarConfig() {
   const toolSideBarConfig =  [
-
     {
       text: '工具',
       collapsed: true,
