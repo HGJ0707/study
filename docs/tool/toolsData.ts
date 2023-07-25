@@ -6,13 +6,22 @@ const toolsData = [
     isSelect: false,
     tools: [
       {
-        title:
-          "Stack Overflow - Where Developers Learn, Share, & Build Careers",
+        title: "Github",
+        icon: "https://github.githubassets.com/apple-touch-icon-144x144.png",
+        link: "https://github.com/",
+      },
+      {
+        title: "Gitee",
+        icon: "https://gitee.com/favicon.ico",
+        link: "https://gitee.com/",
+      },
+      {
+        title: "Stack Overflow",
         icon: "https://cdn.sstatic.net/Sites/stackoverflow/Img/favicon.ico?v=ec617d715196",
         link: "https://stackoverflow.com/",
       },
       {
-        title: "极客时间-轻松学习，高效学习-极客邦",
+        title: "极客时间",
         icon: "https://static001.geekbang.org/static/time/icon/favicon-32x32.jpg",
         link: "https://time.geekbang.org/",
       },
@@ -32,7 +41,7 @@ const toolsData = [
         link: "https://segmentfault.com/",
       },
       {
-        title: "CSDN - 专业开发者社区",
+        title: "CSDN",
         icon: "https://g.csdnimg.cn/static/logo/favicon32.ico",
         link: "https://www.csdn.net/",
       },
@@ -45,7 +54,7 @@ const toolsData = [
     isSelect: false,
     tools: [
       {
-        title: "阮一峰的个人网站 - Ruan YiFeng's Personal Website",
+        title: "阮一峰的个人网站",
         icon: "https://www.ruanyifeng.com/favicon.ico",
         link: "https://www.ruanyifeng.com/",
       },
@@ -55,7 +64,7 @@ const toolsData = [
         link: "https://antfu.me/posts",
       },
       {
-        title: "大圣前端进阶指南 | 解决前端进阶的难点",
+        title: "大圣前端进阶指南",
         icon: "https://cdn.jsdelivr.net/gh/shengxinjing/static/woniu.png",
         link: "https://shengxinjing.cn/",
       },
@@ -65,9 +74,65 @@ const toolsData = [
         link: "https://xiaolincoding.com/",
       },
       {
-        title: "技术胖-胜洪宇关注web前端技术-前端免费视频第一博客",
+        title: "技术胖",
         icon: "https://blogimages.jspang.com/blogtouxiang1.jpg",
         link: "https://jspang.com/",
+      },
+    ],
+  },
+  {
+    type: "AIGC",
+    top: 0,
+    show: true,
+    isSelect: false,
+    tools: [
+      {
+        title: "ChatGPT",
+        icon: "https://chat.openai.com/favicon-32x32.png",
+        link: "https://chat.openai.com/",
+      },
+      {
+        title: "Midjourney",
+        icon: "https://www.midjourney.com/favicon.ico",
+        link: "https://www.midjourney.com/app/",
+      },
+      {
+        title: "通义万相",
+        icon: "https://img.alicdn.com/imgextra/i4/O1CN01c26iB51UyR3MKMFvk_!!6000000002586-2-tps-124-122.png",
+        link: "https://wanxiang.aliyun.com/",
+      },
+    ],
+  },
+  {
+    type: "文档协作",
+    top: 0,
+    show: true,
+    isSelect: false,
+    tools: [
+      {
+        title: "飞书",
+        icon: "https://p1-hera.feishucdn.com/tos-cn-i-jbbdkfciu3/84a9f036fe2b44f99b899fff4beeb963~tplv-jbbdkfciu3-image:0:0.image",
+        link: "https://www.feishu.cn/",
+      },
+      {
+        title: "腾讯文档",
+        icon: "https://docs.idqqimg.com/tim/docs/desktop/favicon.ico",
+        link: "https://docs.qq.com/",
+      },
+      {
+        title: "幕布",
+        icon: "https://sf1-dycdn-tos.pstatp.com/obj/eden-cn/792eh7bouloj/mubu/favicon.ico",
+        link: "https://mubu.com/home",
+      },
+      {
+        title: "ProcessOn",
+        icon: "https://www.processon.com/public_login/favicon.983368c6.ico",
+        link: "https://www.processon.com/",
+      },
+      {
+        title: "Typora",
+        icon: "https://www.typoraio.cn/img/favicon-32.png",
+        link: "https://www.typoraio.cn/",
       },
     ],
   },
@@ -78,55 +143,44 @@ const toolsData = [
     isSelect: false,
     tools: [
       {
-        title: "Github",
-        icon: "https://github.githubassets.com/apple-touch-icon-144x144.png",
-        link: "https://github.com/",
+        title: "Docker",
+        icon: "https://www.docker.com/wp-content/uploads/2023/04/cropped-Docker-favicon-32x32.png",
+        link: "https://www.docker.com/",
       },
       {
-        title: "Gitee - 企业级 DevOps 研发效能平台",
-        icon: "https://gitee.com/favicon.ico",
-        link: "https://gitee.com/",
+        title: "Apifox",
+        icon: "https://cdn.apifox.cn/logo/apifox-logo-256.png",
+        link: "https://apifox.com/",
       },
       {
-        title: "ChatGPT",
-        icon: "https://chat.openai.com/favicon-32x32.png",
-        link: "https://chat.openai.com/",
+        title: "ToDesk",
+        icon: "https://www.todesk.com/dist/img/0a54c32.png",
+        link: "https://www.todesk.com/",
       },
       {
-        title: "通义万相",
-        icon: "https://img.alicdn.com/imgextra/i4/O1CN01c26iB51UyR3MKMFvk_!!6000000002586-2-tps-124-122.png",
-        link: "https://wanxiang.aliyun.com/",
+        title: "iconfont",
+        icon: "https://img.alicdn.com/imgextra/i4/O1CN01Z5paLz1O0zuCC7osS_!!6000000001644-55-tps-83-82.svg",
+        link: "https://www.iconfont.cn/",
       },
       {
-        title: "TinyPNG – Compress WebP, PNG and JPEG images intelligently",
+        title: "Snipaste",
+        icon: "https://zh.snipaste.com/favicon.ico",
+        link: "https://zh.snipaste.com/",
+      },
+      {
+        title: "TinyPNG",
         icon: "https://tinypng.com/images/favicon.ico",
         link: "https://tinypng.com/",
       },
       {
-        title:
-          "飞书——先进企业协作与管理平台，一站式无缝办公协作，团队上下对齐目标，全面激活组织和个人。先进团队，先用飞书。",
-        icon: "https://p1-hera.feishucdn.com/tos-cn-i-jbbdkfciu3/84a9f036fe2b44f99b899fff4beeb963~tplv-jbbdkfciu3-image:0:0.image",
-        link: "https://www.feishu.cn/",
-      },
-      {
-        title: "ProcessOn思维导图流程图-在线画思维导图流程图_在线作图实时协作",
-        icon: "https://www.processon.com/public_login/favicon.983368c6.ico",
-        link: "https://www.processon.com/",
+        title: "Regulex",
+        icon: "https://jex.im/favicon.ico",
+        link: "https://jex.im/regulex/#!flags=&re=%5E(a%7Cb)*%3F%24",
       },
       {
         title: "生成图片",
         icon: "icon",
         link: "https://ltaoo.github.io/tools/#/img-create",
-      },
-      {
-        title: "Regulex：JavaScript Regular Expression Visualizer",
-        icon: "https://jex.im/favicon.ico",
-        link: "https://jex.im/regulex/#!flags=&re=%5E(a%7Cb)*%3F%24",
-      },
-      {
-        title: "title",
-        icon: "icon",
-        link: "link",
       },
     ],
   },
