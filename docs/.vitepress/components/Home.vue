@@ -1,11 +1,17 @@
 <template>
   <section id="hero">
-    <img src="/images/logo-300.png" class="vpImg" alt="">
+    <img src="/images/logo-300.png" class="vpImg" alt="" />
     <h1 class="tagline">
       <span class="accent">GG Bond</span>
       <br />个人学习总结记录
     </h1>
-    <div class="action"><a class="VPButton medium brand" href="/study/front-end/javascript/1-变量声明.html">进入 ——></a></div>
+    <div class="action">
+      <a
+        class="VPButton medium brand"
+        href="/study/front-end/javascript/1-变量声明.html"
+        >进入 ——></a
+      >
+    </div>
   </section>
 </template>
 
@@ -20,7 +26,6 @@ section {
   display: flex;
   flex-direction: column;
   align-items: center;
-
 }
 
 .vpImg {
@@ -39,9 +44,9 @@ section {
 
 .accent {
   background: var(--vp-home-hero-name-background);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: var(--vp-home-hero-name-color);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: var(--vp-home-hero-name-color);
 }
 
 .action {
@@ -51,24 +56,24 @@ section {
 }
 .VPButton {
   display: inline-block;
-    border: 1px solid transparent;
-    text-align: center;
-    font-weight: 600;
-    white-space: nowrap;
-    transition: color 0.25s, border-color 0.25s, background-color 0.25s;
+  border: 1px solid transparent;
+  text-align: center;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: color 0.25s, border-color 0.25s, background-color 0.25s;
 }
 
 .VPButton.medium {
-    border-radius: 20px;
-    padding: 0 20px;
-    line-height: 38px;
-    font-size: 14px;
+  border-radius: 20px;
+  padding: 0 20px;
+  line-height: 38px;
+  font-size: 14px;
 }
 
 .VPButton.brand {
   border-color: var(--vp-button-brand-border);
-    color: var(--vp-button-brand-text);
-    background-color: var(--vp-button-brand-bg);
+  color: var(--vp-button-brand-text);
+  background-color: var(--vp-button-brand-bg);
 }
 
 @media (max-width: 960px) {

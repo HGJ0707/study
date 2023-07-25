@@ -25,4 +25,4 @@
 //     app.provide('filter-headers', filterHeadersByPreference)
 //   }
 // })
-export default {}
+export default {};

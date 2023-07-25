@@ -1,2 +1,2 @@
-export * from './frontEndSideBar'
-export * from './toolSideBar'
+export * from "./frontEndSideBar";
+export * from "./documentSideBar";
