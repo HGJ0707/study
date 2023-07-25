@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted } from "vue";
-import rightArrow from "../public/images/icons/rightArrow.svg";
 import toolsData from "./toolsData";
 
 const data = ref(toolsData);
@@ -37,6 +36,7 @@ const clearSelected = () => {
 
 const clickToMenu = (menu: any) => {
   clearSelected();
+  handleShow(true);
   menu.isSelected = true;
 };
 
@@ -74,23 +74,22 @@ onUnmounted(() => {
 
 <template>
   <div class="wrapper">
-    <div class="header">
+    <div class="header user-select-none">
       <h1>导航</h1>
-      <div>
-        <span v-if="isAllShow" class="cursor-pointer" @click="handleShow(false)"
-          >全部折叠</span
-        >
-        <span v-else class="cursor-pointer" @click="handleShow(true)"
-          >全部展开</span
-        >
+      <div class="header-show-btn cursor-pointer">
+        <span v-if="isAllShow" @click="handleShow(false)">全部折叠</span>
+        <span v-else @click="handleShow(true)">全部展开</span>
       </div>
     </div>
     <section class="content-section" v-for="section in data" :key="section">
-      <div class="section-header">
+      <div
+        class="section-header cursor-pointer"
+        @click.stop="section.show = !section.show"
+      >
         <h2 :id="section?.type">{{ section?.type }}</h2>
         <div
-          class="section-fold-btn cursor-pointer"
-          @click="section.show = !section.show"
+          class="section-fold-btn cursor-pointer user-select-none"
+          @click.stop="section.show = !section.show"
         >
           <svg
             class="section-fold-show"
@@ -117,7 +116,11 @@ onUnmounted(() => {
           </svg>
         </div>
       </div>
-      <div v-show="section?.show" class="content-grid">
+      <div
+        v-show="section?.show"
+        class="content-grid"
+        :style="{ 'margin-bottom': !section?.show ? 0 : '48px' }"
+      >
         <a
           class="content-grid-item cursor-pointer"
           v-for="tool in section?.tools"
@@ -139,7 +142,7 @@ onUnmounted(() => {
     class="fixed-menu"
     :style="{ height: `${(menus.length + 1) * MENU_HEIGHT}px` }"
   >
-    <div class="fix-title">所有菜单</div>
+    <div class="fix-title user-select-none">所有菜单</div>
     <a
       v-for="menu in menus"
       :key="menu"
@@ -159,7 +162,7 @@ onUnmounted(() => {
 .wrapper {
   max-width: 1024px;
   margin: 0 auto;
-  padding: 0px 32px 64px;
+  padding: 0px 32px 200px;
 }
 
 .header {
@@ -180,31 +183,47 @@ onUnmounted(() => {
   letter-spacing: -0.02em;
 }
 
-.content-section {
-  margin-bottom: 32px;
+.header-show-btn {
+  padding: 8px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background-color: var(--vp-c-bg-soft);
+  outline: 1px solid var(--vp-c-divider);
+}
+
+.header-show-btn:hover {
+  outline: 2px solid var(--vp-c-bg-soft-down);
 }
 
 .section-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 0 0 36px;
+  margin: 16px 0;
+  padding: 20px;
   transition: color 0.5s;
-  padding-top: 36px;
-  border-top: 1px solid var(--vp-c-divider);
+  background-color: var(--vp-c-bg-soft);
+  border-radius: 8px;
+}
+
+.section-header:hover {
+  outline: 2px solid var(--vp-c-bg-soft-down);
+}
+
+.section-header:hover h2 {
+  color: var(--vp-c-brand);
 }
 
 .section-header:hover .section-fold-btn svg {
-  color: var(--vp-c-text-1);
+  color: var(--vp-c-brand);
 }
 
 .content-section h2 {
-  font-size: 22px;
+  font-size: 20px;
+  font-weight: 500;
   color: var(--vp-c-text-2);
-}
-
-.section-fold-btn {
-  user-select: none;
 }
 
 .section-fold-btn svg {
@@ -255,7 +274,7 @@ onUnmounted(() => {
 }
 
 .content-grid-item:hover {
-  outline: 3px solid var(--vp-c-bg-soft-down);
+  outline: 2px solid var(--vp-c-bg-soft-down);
 }
 
 .item-icon {
@@ -280,10 +299,6 @@ onUnmounted(() => {
   text-overflow: ellipsis;
   color: var(--vp-c-text-1);
   font-weight: 600;
-}
-
-.cursor-pointer {
-  cursor: pointer;
 }
 
 @media (max-width: 1500px) {
@@ -314,6 +329,12 @@ onUnmounted(() => {
   padding: 5px 15px;
   display: block;
   position: relative;
+  font-size: 14px;
+}
+
+.fix-menu-item:hover {
+  background-color: var(--vp-c-bg-soft);
+  color: var(--vp-c-brand);
 }
 
 .fix-menu-item::after {
@@ -331,5 +352,13 @@ onUnmounted(() => {
 
 .active-fix-menu::after {
   opacity: 1;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.user-select-none {
+  user-select: none !important;
 }
 </style>
