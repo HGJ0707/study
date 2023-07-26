@@ -188,6 +188,11 @@ const toolsData = [
         link: "https://tinypng.com/",
       },
       {
+        title: "iloveimg",
+        icon: "https://www.iloveimg.com/img/favicons-img/favicon-16x16.png",
+        link: "https://www.iloveimg.com/zh-cn/compress-image",
+      },
+      {
         title: "Regulex",
         icon: "https://jex.im/favicon.ico",
         link: "https://jex.im/regulex/#!flags=&re=%5E(a%7Cb)*%3F%24",
