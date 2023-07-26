@@ -143,6 +143,16 @@ const toolsData = [
     isSelect: false,
     tools: [
       {
+        title: "Clash",
+        icon: "https://raw.githubusercontent.com/Dreamacro/clash/master/docs/logo.png",
+        link: "https://github.com/Dreamacro/clash/releases/tag/premium",
+      },
+      {
+        title: "WindTerm",
+        icon: "",
+        link: "https://github.com/kingToolbox/WindTerm/releases",
+      },
+      {
         title: "Docker",
         icon: "https://www.docker.com/wp-content/uploads/2023/04/cropped-Docker-favicon-32x32.png",
         link: "https://www.docker.com/",
@@ -156,6 +166,11 @@ const toolsData = [
         title: "ToDesk",
         icon: "https://www.todesk.com/dist/img/0a54c32.png",
         link: "https://www.todesk.com/",
+      },
+      {
+        title: "Figma",
+        icon: "https://static.figma.com/app/icon/1/favicon.ico",
+        link: "https://www.figma.com/",
       },
       {
         title: "iconfont",
@@ -179,7 +194,7 @@ const toolsData = [
       },
       {
         title: "生成图片",
-        icon: "icon",
+        icon: "",
         link: "https://ltaoo.github.io/tools/#/img-create",
       },
     ],
@@ -219,6 +234,24 @@ const toolsData = [
         title: "vue-element-admin",
         icon: "https://panjiachen.github.io/vue-element-admin-site/home.png",
         link: "https://panjiachen.github.io/vue-element-admin-site/",
+      },
+    ],
+  },
+  {
+    type: "视频创作",
+    top: 0,
+    show: true,
+    isSelect: false,
+    tools: [
+      {
+        title: "DaVinci Resolve",
+        icon: "https://www.blackmagicdesign.com/favicon.ico",
+        link: "https://www.blackmagicdesign.com/products/davinciresolve",
+      },
+      {
+        title: "Arctime",
+        icon: "https://arctime.org/images/favicon.ico?crc=388733599",
+        link: "https://arctime.org/",
       },
     ],
   },

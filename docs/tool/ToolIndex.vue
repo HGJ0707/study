@@ -27,6 +27,7 @@ const menus = ref(
     };
   })
 );
+menus.value[0].isSelected = true;
 
 const clearSelected = () => {
   menus.value.forEach((item: any) => {
@@ -73,8 +74,8 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="wrapper">
-    <div class="header user-select-none">
+  <div class="wrapper user-select-none">
+    <div class="header">
       <h1>导航</h1>
       <div class="header-show-btn cursor-pointer">
         <span v-if="isAllShow" @click="handleShow(false)">全部折叠</span>
@@ -86,9 +87,11 @@ onUnmounted(() => {
         class="section-header cursor-pointer"
         @click.stop="section.show = !section.show"
       >
-        <h2 :id="section?.type">{{ section?.type }}</h2>
+        <h2 :id="section?.type">
+          {{ section?.type }}
+        </h2>
         <div
-          class="section-fold-btn cursor-pointer user-select-none"
+          class="section-fold-btn cursor-pointer"
           @click.stop="section.show = !section.show"
         >
           <svg
@@ -129,7 +132,10 @@ onUnmounted(() => {
           :href="tool.link"
           :title="tool.title"
         >
-          <div class="item-icon"><img :src="tool?.icon" alt="" /></div>
+          <div class="item-icon">
+            <img v-if="tool?.icon" :src="tool?.icon" alt="" />
+            <div v-else>{{ tool?.title?.charAt(0) }}</div>
+          </div>
           <div>
             <div class="item-name">{{ tool?.title }}</div>
           </div>
@@ -140,9 +146,9 @@ onUnmounted(() => {
 
   <section
     class="fixed-menu"
-    :style="{ height: `${(menus.length + 1) * MENU_HEIGHT}px` }"
+    :style="{ height: `${(menus.length + 1) * (MENU_HEIGHT + 5)}px` }"
   >
-    <div class="fix-title user-select-none">所有菜单</div>
+    <div class="fix-title">所有菜单</div>
     <a
       v-for="menu in menus"
       :key="menu"
@@ -153,7 +159,8 @@ onUnmounted(() => {
       }"
       @click="clickToMenu(menu)"
     >
-      {{ menu.type }}{{ `（${menu.count}）` }}
+      {{ menu.type }}
+      {{ ` [${menu.count}]` }}
     </a>
   </section>
 </template>
@@ -162,7 +169,7 @@ onUnmounted(() => {
 .wrapper {
   max-width: 1024px;
   margin: 0 auto;
-  padding: 0px 32px 200px;
+  padding: 0px 32px 500px;
 }
 
 .header {
@@ -184,13 +191,14 @@ onUnmounted(() => {
 }
 
 .header-show-btn {
-  padding: 8px 18px;
+  padding: 4px 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 8px;
   background-color: var(--vp-c-bg-soft);
   outline: 1px solid var(--vp-c-divider);
+  font-size: 14px;
 }
 
 .header-show-btn:hover {
@@ -292,6 +300,11 @@ onUnmounted(() => {
   padding: 10px;
 }
 
+.item-icon img {
+  min-width: 30px;
+  min-height: 30px;
+}
+
 .item-name {
   width: 188px;
   white-space: nowrap;
@@ -330,6 +343,7 @@ onUnmounted(() => {
   display: block;
   position: relative;
   font-size: 14px;
+  margin: 5px 0;
 }
 
 .fix-menu-item:hover {
@@ -339,7 +353,7 @@ onUnmounted(() => {
 
 .fix-menu-item::after {
   content: "";
-  width: 1px;
+  width: 2px;
   height: 34px;
   background: var(--vp-c-brand);
   display: block;
@@ -348,6 +362,11 @@ onUnmounted(() => {
   top: 0px;
   opacity: 0;
   transition: 0.25s;
+}
+
+.active-fix-menu {
+  background-color: var(--vp-c-bg-soft);
+  color: var(--vp-c-brand);
 }
 
 .active-fix-menu::after {
