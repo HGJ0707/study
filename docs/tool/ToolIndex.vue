@@ -7,6 +7,8 @@ const data = ref(toolsData);
 // 展开收起
 const handleShow = (isFold: boolean): void => {
   data.value.forEach((menu: any) => (menu.show = isFold));
+  window.scrollTo({top: 530,behavior: 'smooth'});
+
 };
 
 // 是否全部展开
@@ -41,13 +43,25 @@ const clickToMenu = (menu: any) => {
   menu.isSelected = true;
 };
 
+const isShowSidebar = ref(false);
+const judgeShowSideBar = () => {
+  const toolWrapperDom = document.getElementsByClassName('wrapper')[0];
+  if (toolWrapperDom?.getBoundingClientRect()?.top < 200) {
+    isShowSidebar.value = true;
+  } else {
+    isShowSidebar.value = false;
+  }
+}
+
 // 监听滚动事件，判断
 const scrollEvent = () => {
+  judgeShowSideBar();
+
   const currentPosition = window.scrollY + 200;
   for (let i = 0; i < menus.value.length; i++) {
     if (
-      currentPosition > menus.value[i].top &&
-      currentPosition < menus.value[i + 1].top
+      currentPosition > menus.value[i]?.top &&
+      currentPosition < menus.value[i + 1]?.top
     ) {
       clearSelected();
       menus.value[i].isSelected = true;
@@ -62,7 +76,7 @@ onMounted(() => {
     const menu = menus.value.filter((item: any) => {
       return item.type === menuEle.innerHTML;
     });
-    menu[0].top = menuEle.getBoundingClientRect().top;
+    menu[0].top = menuEle?.getBoundingClientRect()?.top;
   });
 
   document.addEventListener("scroll", scrollEvent);
@@ -77,9 +91,9 @@ onUnmounted(() => {
   <div class="wrapper user-select-none">
     <div class="header">
       <h1>导航</h1>
-      <div class="header-show-btn cursor-pointer">
-        <span v-if="isAllShow" @click="handleShow(false)">全部折叠</span>
-        <span v-else @click="handleShow(true)">全部展开</span>
+        <div class="header-show-btn cursor-pointer">
+          <span v-if="isAllShow" @click="handleShow(false)">全部折叠</span>
+          <span v-else @click="handleShow(true)">全部展开</span>
       </div>
     </div>
     <section class="content-section" v-for="section in data" :key="section">
@@ -145,7 +159,8 @@ onUnmounted(() => {
   </div>
 
   <section
-    class="fixed-menu"
+    class="fixed-menu user-select-none"
+    :class="{'show-side-bar': isShowSidebar}"
     :style="{ height: `${(menus.length + 1) * (MENU_HEIGHT + 5)}px` }"
   >
     <div class="fix-title">所有菜单</div>
@@ -169,7 +184,7 @@ onUnmounted(() => {
 .wrapper {
   max-width: 1024px;
   margin: 0 auto;
-  padding: 0px 32px 500px;
+  padding: 0px 32px 200px;
 }
 
 .header {
@@ -265,7 +280,7 @@ onUnmounted(() => {
     height: 70px;
     background-color: var(--vp-c-bg);
     position: sticky;
-    top: 49px;
+    top: 0px;
   }
 }
 
@@ -320,15 +335,20 @@ onUnmounted(() => {
   }
 }
 
+.show-side-bar {
+  right: 40px !important;
+}
+
 .fixed-menu {
   position: fixed;
   top: 136px;
-  right: 40px;
+  right: -200px;
   width: 200px;
   height: 700px;
   background-color: var(--vp-c-bg);
   border-left: 1px solid var(--vp-c-divider);
   color: var(--vp-c-text-2);
+  transition: all .7s; /* 过渡动画效果，持续1秒 */
 }
 
 .fix-title {

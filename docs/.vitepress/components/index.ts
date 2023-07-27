@@ -14,15 +14,7 @@
 //     return h(VPTheme.Layout, null, {
 //       // banner: () => h(Banner),
 //       'sidebar-top': () => h(PreferenceSwitch),
-//       'aside-mid': () => h(SponsorsAside),
-//       'aside-bottom': () => h(WwAds),
-//       // 'content-top': () => h(TextAd)
 //     })
 //   },
-//   enhanceApp({ app }: { app: App }) {
-//     app.provide('prefer-composition', preferComposition)
-//     app.provide('prefer-sfc', preferSFC)
-//     app.provide('filter-headers', filterHeadersByPreference)
-//   }
+ 
 // })
-export default {};

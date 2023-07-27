@@ -10,7 +10,7 @@ import navBarConfig from "./config/navBarConfig/index";
 export default defineConfig({
   lang: "zh-CN",
   title: "GG Bond",
-  description: "个人学习总结记录",
+  description: "学习总结记录",
   base: "/study/",
   port: "8099",
   head: [
