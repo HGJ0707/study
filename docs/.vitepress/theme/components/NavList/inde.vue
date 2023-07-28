@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted } from "vue";
 import toolsData from "./toolsData";
+import iconRightArrow from '../../../../public/images/icons/iconRightArrow.svg?raw';
 
 const data = ref(toolsData);
 
@@ -91,7 +92,7 @@ onUnmounted(() => {
   <div class="wrapper user-select-none">
     <div class="header">
       <h1>导航</h1>
-        <div class="header-show-btn cursor-pointer">
+      <div class="header-show-btn cursor-pointer">
           <span v-if="isAllShow" @click="handleShow(false)">全部折叠</span>
           <span v-else @click="handleShow(true)">全部展开</span>
       </div>
@@ -108,29 +109,8 @@ onUnmounted(() => {
           class="section-fold-btn cursor-pointer"
           @click.stop="section.show = !section.show"
         >
-          <svg
-            class="section-fold-show"
-            v-if="section.show"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-            focusable="false"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M9,19c-0.3,0-0.5-0.1-0.7-0.3c-0.4-0.4-0.4-1,0-1.4l5.3-5.3L8.3,6.7c-0.4-0.4-0.4-1,0-1.4s1-0.4,1.4,0l6,6c0.4,0.4,0.4,1,0,1.4l-6,6C9.5,18.9,9.3,19,9,19z"
-            ></path>
-          </svg>
-          <svg
-            v-else
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-            focusable="false"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M9,19c-0.3,0-0.5-0.1-0.7-0.3c-0.4-0.4-0.4-1,0-1.4l5.3-5.3L8.3,6.7c-0.4-0.4-0.4-1,0-1.4s1-0.4,1.4,0l6,6c0.4,0.4,0.4,1,0,1.4l-6,6C9.5,18.9,9.3,19,9,19z"
-            ></path>
-          </svg>
+          <div v-if="section.show" v-html="iconRightArrow" class="down-icon arrow-icon"></div>
+          <div v-else v-html="iconRightArrow" class="arrow-icon"></div>
         </div>
       </div>
       <div
@@ -191,11 +171,11 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 70px;
-  background-color: var(--vp-c-bg);
   position: sticky;
   top: 64px;
   z-index: 1;
+  height: 70px;
+  background-color: var(--vp-c-bg);
   border-bottom: 1px solid var(--vp-c-divider);
 }
 
@@ -206,18 +186,15 @@ onUnmounted(() => {
 }
 
 .header-show-btn {
-  padding: 4px 12px;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 14px;
+  padding: 4px 12px;
   border-radius: 8px;
   background-color: var(--vp-c-bg-soft);
   outline: 1px solid var(--vp-c-divider);
-  font-size: 14px;
-}
-
-.header-show-btn:hover {
-  outline: 2px solid var(--vp-c-bg-soft-down);
+  transition: all 0.3s;
 }
 
 .section-header {
@@ -226,21 +203,10 @@ onUnmounted(() => {
   justify-content: space-between;
   margin: 16px 0;
   padding: 20px;
-  transition: color 0.5s;
-  background-color: var(--vp-c-bg-soft);
   border-radius: 8px;
-}
-
-.section-header:hover {
-  outline: 2px solid var(--vp-c-bg-soft-down);
-}
-
-.section-header:hover h2 {
-  color: var(--vp-c-brand);
-}
-
-.section-header:hover .section-fold-btn svg {
-  color: var(--vp-c-brand);
+  background-color: var(--vp-c-bg-soft);
+  outline: 2px solid transparent;
+  transition: all 0.3s;
 }
 
 .content-section h2 {
@@ -249,15 +215,18 @@ onUnmounted(() => {
   color: var(--vp-c-text-2);
 }
 
-.section-fold-btn svg {
-  width: 24px;
-  height: 24px;
-  fill: currentColor;
-  transition: transform 0.25s;
-  color: var(--vp-c-text-3);
+.header-show-btn:hover,
+.section-header:hover {
+  outline: 2px solid var(--vp-c-bg-soft-down);
+  transition: all 0.3s;
 }
 
-.section-fold-show {
+.section-header:hover h2 {
+  color: var(--vp-c-brand);
+  transition: all 0.3s;
+}
+
+.down-icon {
   transform: rotate(90deg);
 }
 
@@ -265,7 +234,54 @@ onUnmounted(() => {
   display: grid;
   grid-template-columns: repeat(auto-fill, 306px);
   grid-column-gap: 20px;
-  transition: transform 0.25s;
+  transition: transform 0.3s;
+}
+
+.content-grid-item {
+  display: flex;
+  align-items: center;
+  break-inside: avoid;
+  overflow: auto;
+  margin-bottom: 20px;
+  padding: 15px;
+  border-radius: 8px;
+  outline: 2px solid transparent;
+  background-color: var(--vp-c-bg-soft);
+  transition: all 0.3s;
+}
+
+.content-grid-item:hover {
+  outline: 2px solid var(--vp-c-bg-soft-down);
+  transition: all 0.3s;
+}
+
+.item-icon {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  border-radius: 6px;
+  background-color: var(--vp-c-bg-soft-down);
+  width: 58px;
+  height: 58px;
+  font-size: 24px;
+  padding: 10px;
+  transition: all .3s;
+}
+
+.item-icon img {
+  min-width: 30px;
+  min-height: 30px;
+}
+
+.item-name {
+  width: 188px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--vp-c-text-1);
+  font-weight: 600;
 }
 
 @media (max-width: 768px) {
@@ -282,51 +298,6 @@ onUnmounted(() => {
     position: sticky;
     top: 0px;
   }
-}
-
-.content-grid-item {
-  break-inside: avoid;
-  overflow: auto;
-  margin-bottom: 20px;
-  background-color: var(--vp-c-bg-soft);
-  border-radius: 8px;
-  padding: 15px;
-  transition: background-color 0.5s;
-  display: flex;
-  align-items: center;
-}
-
-.content-grid-item:hover {
-  outline: 2px solid var(--vp-c-bg-soft-down);
-}
-
-.item-icon {
-  flex-shrink: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 20px;
-  border-radius: 6px;
-  background-color: var(--vp-c-bg-soft-down);
-  width: 58px;
-  height: 58px;
-  font-size: 24px;
-  transition: background-color 0.25s;
-  padding: 10px;
-}
-
-.item-icon img {
-  min-width: 30px;
-  min-height: 30px;
-}
-
-.item-name {
-  width: 188px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  color: var(--vp-c-text-1);
-  font-weight: 600;
 }
 
 @media (max-width: 1500px) {
@@ -364,23 +335,25 @@ onUnmounted(() => {
   position: relative;
   font-size: 14px;
   margin: 5px 0;
+  transition: all 0.2s;
 }
 
 .fix-menu-item:hover {
   background-color: var(--vp-c-bg-soft);
   color: var(--vp-c-brand);
+  transition: all 0.2s;
 }
 
 .fix-menu-item::after {
   content: "";
   width: 2px;
   height: 34px;
-  background: var(--vp-c-brand);
   display: block;
   position: absolute;
   left: -1px;
   top: 0px;
   opacity: 0;
+  background: var(--vp-c-brand);
   transition: 0.25s;
 }
 
@@ -399,5 +372,21 @@ onUnmounted(() => {
 
 .user-select-none {
   user-select: none !important;
+}
+</style>
+
+
+<style>
+.section-fold-btn .arrow-icon {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+  color: var(--vp-c-text-3);
+  transition: transform 0.25s;
+}
+
+.section-header:hover .section-fold-btn .arrow-icon {
+  fill: var(--vp-c-brand);
+  transition: transform 0.25s;
 }
 </style>
