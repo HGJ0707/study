@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import ToolIndex from '../../tool/ToolIndex.vue';
-import BackToTop from './BackToTop/index.vue';
+import NavList from "../NavList/inde.vue";
+import BackToTop from "../BackToTop/index.vue";
 </script>
 
 <template>
@@ -10,25 +10,24 @@ import BackToTop from './BackToTop/index.vue';
       <span class="accent">GG Bond</span>
       <br />学习总结记录
     </h1>
-    <div  class="actions">
+    <div class="actions">
       <div class="action">
-      <a
-        class="VPButton medium brand"
-        href="/study/front-end/javascript/1-变量声明.html"
-        >进入文章 ——></a
-      >
-    </div>
-    <div class="action">
-      <a
-        class="VPButton medium alt"
-        href="javascript:scrollTo({top: 530,behavior: 'smooth'});"
-        >快捷导航
-        </a
-      >
-    </div>
+        <a
+          class="VPButton medium brand"
+          href="/study/front-end/javascript/1-变量声明.html"
+          >进入文章 ——></a
+        >
+      </div>
+      <div class="action">
+        <a
+          class="VPButton medium alt"
+          href="javascript:scrollTo({top: 530,behavior: 'smooth'});"
+          >快捷导航
+        </a>
+      </div>
     </div>
   </section>
-  <ToolIndex />
+  <NavList />
   <BackToTop />
 </template>
 
@@ -63,7 +62,7 @@ import BackToTop from './BackToTop/index.vue';
   -webkit-text-fill-color: var(--vp-home-hero-name-color);
 }
 
-.actions{
+.actions {
   display: flex;
   flex-wrap: wrap;
   margin: -6px;

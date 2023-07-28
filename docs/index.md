@@ -5,7 +5,7 @@ title: Home
 ---
 
 <script setup>
-import Home from '/.vitepress/components/Home.vue'
+import Home from '/.vitepress/theme/components/Home/index.vue'
 </script>
 
 <Home />
