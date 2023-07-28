@@ -8,6 +8,7 @@
     "docs:preview": "vitepress preview docs"
   },
   "dependencies": {
-    "@vue/theme": "^2.2.3"
+    "@vue/theme": "^2.2.3",
+    "qrcode": "^1.5.3"
   }
 }
