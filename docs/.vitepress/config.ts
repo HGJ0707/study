@@ -12,7 +12,8 @@ export default defineConfig({
   title: "GG Bond",
   description: "学习总结记录",
   base: "/study/",
-  port: "8099",
+  lastUpdated: true,
+  cleanUrls: true,
   head: [
     // 设置 favor.ico，.vitepress/public 下
     [
