@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
 import QRCode from "qrcode";
+import utils from '../../../../util/index';
 import iconQrcode from "../../../../public/images/icons/iconQrcode.svg?raw";
 import iconClose from "../../../../public/images/icons/iconClose.svg?raw";
+import iconDownload from "../../../../public/images/icons/iconDownload.svg?raw";
 
 const codeUrl = ref(null);
 const isShowCode = ref(false);
@@ -10,13 +12,19 @@ const isShowCode = ref(false);
 const createCodeUrl = async () => {
   try {
     const url = await QRCode.toDataURL(window.location.href, {
-      width: 170,
-      margin: 5,
+      width: 150,
+      margin: 3,
     });
     codeUrl.value = url;
   } catch (error) {
     console.error(error);
   }
+};
+
+const downloadQrcode = () => {
+  const { base64ToBlob, downloadImg } = utils;
+  const blob = base64ToBlob(codeUrl.value);
+  downloadImg(blob, 'GGBond_site_code')
 };
 
 const showCode = (isShow: boolean) => {
@@ -40,7 +48,10 @@ onMounted(() => {
           <div v-html="iconClose" class="close-icon"></div>
         </div>
         <div class="code-text">手机扫码浏览</div>
-        <img :src="codeUrl" class="code-img" alt="" />
+        <div class="code-img">
+          <div class="download-btn" v-html="iconDownload" @click="downloadQrcode"></div>
+          <img :src="codeUrl" alt="" />
+        </div>
       </div>
     </div>
   </teleport>
@@ -78,9 +89,8 @@ onMounted(() => {
 }
 
 .code-modal {
-  width: 240px;
   border-radius: 4px;
-  background: var(--vp-c-bg);
+  background: #fff;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -88,14 +98,18 @@ onMounted(() => {
   justify-content: center;
   position: relative;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 2px 30px 0px;
-  padding: 50px 30px 30px;
+  padding: 60px 40px 40px;
 }
 
 .code-text {
   font-size: 16px;
   font-weight: 600;
-  color: var(--vp-c-text-1);
+  color: #000;
   margin-bottom: 30px;
+}
+
+.code-img {
+  position: relative;
 }
 
 .code-close {
@@ -114,7 +128,7 @@ onMounted(() => {
 }
 
 .code-close:hover {
-  background: var(--vp-c-bg-soft-down);
+  background: #e3e3e5;
 }
 
 @media (max-width: 800px) {
@@ -126,8 +140,30 @@ onMounted(() => {
 
 <style>
 .code-modal .code-close svg {
-  fill: #000;
+  fill: #000 !important;
   width: 14px;
   height: 14px;
 }
+
+
+.download-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 32px;
+  height: 32px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: 2px solid green;
+  cursor: pointer;
+}
+
+.download-btn svg {
+  width: 16px;
+}
+
 </style>
