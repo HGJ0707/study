@@ -12,7 +12,7 @@ const isShowCode = ref(false);
 const createCodeUrl = async () => {
   try {
     const url = await QRCode.toDataURL(window.location.href, {
-      width: 150,
+      width: 220,
       margin: 3,
     });
     codeUrl.value = url;
@@ -48,8 +48,8 @@ onMounted(() => {
           <div v-html="iconClose" class="close-icon"></div>
         </div>
         <div class="code-text">手机扫码浏览</div>
-        <div class="code-img">
-          <div class="download-btn" v-html="iconDownload" @click="downloadQrcode"></div>
+        <div class="code-img" @click="downloadQrcode">
+          <div class="download-btn" v-html="iconDownload" ></div>
           <img :src="codeUrl" alt="" />
         </div>
       </div>
@@ -89,6 +89,8 @@ onMounted(() => {
 }
 
 .code-modal {
+  width: 300px;
+  height: 400px;
   border-radius: 4px;
   background: #fff;
   margin: 0 auto;
@@ -102,22 +104,22 @@ onMounted(() => {
 }
 
 .code-text {
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 22px;
   color: #000;
   margin-bottom: 30px;
 }
 
 .code-img {
   position: relative;
+  cursor: pointer;
 }
 
 .code-close {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 24px;
-  height: 24px;
+  top: 15px;
+  right: 15px;
+  width: 30px;
+  height: 30px;
   border-radius: 4px;
   background: transparent;
   display: flex;
@@ -140,9 +142,9 @@ onMounted(() => {
 
 <style>
 .code-modal .code-close svg {
-  fill: #000 !important;
-  width: 14px;
-  height: 14px;
+  fill: #fff !important;
+  width: 20px;
+  height: 20px;
 }
 
 

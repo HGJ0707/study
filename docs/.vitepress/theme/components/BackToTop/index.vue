@@ -39,7 +39,7 @@ onUnmounted(() => {
   border: 1px solid transparent;
   color: var(--vp-c-text-2);
   opacity: 0;
-  z-index: 9999;
+  z-index: 9998;
   cursor: pointer;
   transition: all 0.7s;
 }
