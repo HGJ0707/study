@@ -3,7 +3,7 @@ import { ref, onMounted } from "vue";
 import QRCode from "qrcode";
 import utils from '../../../../util/index';
 import iconQrcode from "../../../../public/images/icons/iconQrcode.svg?raw";
-import iconClose from "../../../../public/images/icons/iconClose.svg?raw";
+import iconClose from "../../../../public/images/icons/IconClose.svg?raw";
 import iconDownload from "../../../../public/images/icons/iconDownload.svg?raw";
 
 const codeUrl = ref(null);
