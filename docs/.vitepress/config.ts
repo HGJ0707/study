@@ -2,6 +2,7 @@ import { defineConfig } from "vitepress";
 import type { Config as ThemeConfig } from "@vue/theme";
 import {
   frontEndSideBarConfig,
+  afterEndSideBar,
   documentSideBarConfig,
 } from "./config/sideBarConfig/index";
 import navBarConfig from "./config/navBarConfig/index";
@@ -31,6 +32,7 @@ export default defineConfig({
     nav: navBarConfig(),
     sidebar: {
       "/front-end/": frontEndSideBarConfig(),
+      "/after-end/": afterEndSideBar(),
       "/document/": documentSideBarConfig(),
     },
     socialLinks: [{ icon: "github", link: "https://github.com/HGJ0707/study" }],
