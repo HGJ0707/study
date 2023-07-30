@@ -28,7 +28,8 @@ const downloadQrcode = () => {
 };
 
 const showCode = (isShow: boolean) => {
-  // document.body.style.overflow = isShow ? "hidden" : "auto";
+  document.body.style.overflow = isShow ? "hidden" : "auto";
+  document.body.style.paddingRight = isShow ? "18px" : "0px";
   isShowCode.value = isShow;
 };
 
