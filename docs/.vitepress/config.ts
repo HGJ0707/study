@@ -40,5 +40,9 @@ export default defineConfig({
       next: "下一页",
     },
     lastUpdatedText: "最后更新",
+    // 本地搜索
+    search: {
+      provider: 'local'
+    }
   },
 });
