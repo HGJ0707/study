@@ -165,6 +165,11 @@ const toolsData = [
         link: "https://www.iloveimg.com/zh-cn/compress-image",
       },
       {
+        title: "Gifox",
+        icon: "https://gifox.app/favicon/favicon.ico",
+        link: "https://gifox.app/",
+      },
+      {
         title: "生成图片",
         icon: "",
         link: "https://ltaoo.github.io/tools/#/img-create",

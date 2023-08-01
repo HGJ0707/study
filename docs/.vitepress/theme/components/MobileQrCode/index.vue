@@ -1,30 +1,39 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
 import QRCode from "qrcode";
-import utils from '../../../../util/index';
+import utils from "../../../../util/index";
 import iconQrcode from "../../../../public/images/icons/iconQrcode.svg?raw";
 import iconClose from "../../../../public/images/icons/IconClose.svg?raw";
-import iconDownload from "../../../../public/images/icons/iconDownload.svg?raw";
 
-const codeUrl = ref(null);
 const isShowCode = ref(false);
+const refCanvasDOM = ref(null);
 
-const createCodeUrl = async () => {
+const createQrcode = async () => {
   try {
-    const url = await QRCode.toDataURL(window.location.href, {
+    // 创建二维码实例
+    await QRCode.toCanvas(refCanvasDOM.value, window.location.href, {
       width: 220,
       margin: 3,
     });
-    codeUrl.value = url;
+    const ctx = refCanvasDOM.value.getContext("2d");
+    const logo = new Image();
+    logo.src = "../../../../public/images/logo.png";
+    logo.onload = function () {
+      const logoSize = refCanvasDOM.value.width / 5;
+      const x = (refCanvasDOM.value.width - logoSize) / 2;
+      const y = (refCanvasDOM.value.height - logoSize) / 2;
+      ctx.drawImage(logo, x, y, logoSize, logoSize);
+    };
   } catch (error) {
     console.error(error);
   }
 };
 
 const downloadQrcode = () => {
-  const { base64ToBlob, downloadImg } = utils;
-  const blob = base64ToBlob(codeUrl.value);
-  downloadImg(blob, 'GGBond_site_code')
+  const aLink = document.createElement("a");
+  aLink.download = "GGBond_site_qrcode";
+  aLink.href = refCanvasDOM.value?.toDataURL("image/png");
+  aLink.click();
 };
 
 const showCode = (isShow: boolean) => {
@@ -34,7 +43,7 @@ const showCode = (isShow: boolean) => {
 };
 
 onMounted(() => {
-  createCodeUrl();
+  createQrcode();
 });
 </script>
 
@@ -49,9 +58,8 @@ onMounted(() => {
           <div v-html="iconClose" class="close-icon"></div>
         </div>
         <div class="code-text">手机扫码浏览</div>
-        <div class="code-img" @click="downloadQrcode">
-          <div class="download-btn" v-html="iconDownload" ></div>
-          <img :src="codeUrl" alt="" />
+        <div class="code-img" title="点击下载二维码" @click="downloadQrcode">
+          <canvas ref="refCanvasDOM"></canvas>
         </div>
       </div>
     </div>
@@ -147,26 +155,4 @@ onMounted(() => {
   width: 20px;
   height: 20px;
 }
-
-
-.download-btn {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 32px;
-  height: 32px;
-  background: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 8px;
-  border: 2px solid green;
-  cursor: pointer;
-}
-
-.download-btn svg {
-  width: 16px;
-}
-
 </style>
