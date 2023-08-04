@@ -40,6 +40,10 @@ DATETIME：存储日期和时间 2023-05-27 10:13
 
 ## sql 操作
 
+:::tip
+[SQL 之母 - 闯关式 SQL 自学网](http://sqlmother.yupi.icu/)
+:::
+
 - 表创建
 
 ```SQL
@@ -90,5 +94,3 @@ TRUNCATE `hello-mysql`.`student`;
 ```SQL
 DROP TABLE `hello-mysql`.`student`;
 ```
-
-
