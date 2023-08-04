@@ -36,15 +36,18 @@ export default defineConfig({
       "/document/": documentSideBarConfig(),
     },
     socialLinks: [{ icon: "github", link: "https://github.com/HGJ0707/study" }],
-    outlineTitle: "本页目录",
     docFooter: {
       prev: "上一页",
       next: "下一页",
     },
+    outline: {
+      level: [2, 6],
+      label: "本页目录",
+    },
     lastUpdatedText: "最后更新",
     // 本地搜索
     search: {
-      provider: 'local'
-    }
+      provider: "local",
+    },
   },
 });

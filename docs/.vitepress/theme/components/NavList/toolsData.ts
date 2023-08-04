@@ -212,6 +212,11 @@ const toolsData = [
         icon: "https://panjiachen.github.io/vue-element-admin-site/home.png",
         link: "https://panjiachen.github.io/vue-element-admin-site/",
       },
+      {
+        title: "Equal UI",
+        icon: "https://equal-ui.github.io/Equal/favicon.ico",
+        link: "https://equal-ui.github.io/Equal/",
+      },
     ],
   },
   {
@@ -222,7 +227,7 @@ const toolsData = [
     tools: [
       {
         title: "VitePress",
-        icon: "https://avatars.githubusercontent.com/u/6128107?s=48&v=4",
+        icon: "https://vitejs.cn/logo.svg",
         link: "https://vitepress.dev/",
       },
       {
@@ -304,3 +309,7 @@ const toolsData = [
 ];
 
 export default toolsData;
+
+// {
+//   https://app.jellylade.com/
+// }

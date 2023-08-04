@@ -17,7 +17,7 @@ const createQrcode = async () => {
     });
     const ctx = refCanvasDOM.value.getContext("2d");
     const logo = new Image();
-    logo.src = "../../../../public/images/logo100.png";
+    logo.src = "/images/logo100.png";
     logo.onload = function () {
       const logoSize = refCanvasDOM.value.width / 5;
       const x = (refCanvasDOM.value.width - logoSize) / 2;
