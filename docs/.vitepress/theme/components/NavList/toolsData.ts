@@ -174,6 +174,11 @@ const toolsData = [
         icon: "",
         link: "https://ltaoo.github.io/tools/#/img-create",
       },
+      {
+        title: "Fliqlo",
+        icon: "https://fliqlo.com/images/icon-ipa.png",
+        link: "https://fliqlo.com/",
+      },
     ],
   },
   {
@@ -227,7 +232,7 @@ const toolsData = [
     tools: [
       {
         title: "VitePress",
-        icon: "https://vitejs.cn/logo.svg",
+        icon: "https://vitepress.dev/vitepress-logo-mini.svg",
         link: "https://vitepress.dev/",
       },
       {
